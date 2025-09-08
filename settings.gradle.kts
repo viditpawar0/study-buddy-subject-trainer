@@ -1,1 +1,1 @@
-rootProject.name = "subject_trainer"
+rootProject.name = "Subject Trainer"

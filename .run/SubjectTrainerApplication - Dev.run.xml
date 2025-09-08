@@ -1,0 +1,17 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="SubjectTrainerApplication - Dev" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <option name="ACTIVE_PROFILES" value="dev" />
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <module name="Subject_Trainer.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.studybuddy.subject_trainer.SubjectTrainerApplication" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.studybuddy.subject_trainer.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
