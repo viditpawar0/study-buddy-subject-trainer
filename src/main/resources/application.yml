@@ -1,0 +1,18 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: subject-trainer
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: boot
+    url: jdbc:postgresql://localhost:5432/sb_subject_trainer
+    username: springboot
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  ai:
+    openai:
+      base-url: http://127.0.0.1:1234
+      api-key: xx
