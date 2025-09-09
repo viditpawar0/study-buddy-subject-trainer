@@ -21,14 +21,12 @@ import java.util.UUID;
 public class SubjectService {
     private final SubjectRepository subjectRepository;
     private final S3Template s3Template;
-    private final ChatModel chatModel;
     private final ChatClient chatClient;
     private final TopicFeignClient topicFeignClient;
 
     public SubjectService(SubjectRepository subjectRepository, S3Template s3Template, ChatModel chatModel, TopicFeignClient topicFeignClient) {
         this.subjectRepository = subjectRepository;
         this.s3Template = s3Template;
-        this.chatModel = chatModel;
         this.chatClient = ChatClient.create(chatModel);
         this.topicFeignClient = topicFeignClient;
     }
@@ -79,7 +77,6 @@ public class SubjectService {
             Chapter chapter = persistedChapters.get(i);
             List<String> topics = extracted.chapters().get(i).topics();
             for (String topic : topics) {
-                System.out.println("Posting topic: " + topic + " for chapter ID: " + chapter.getId());
                 topicFeignClient.postTopic(new TopicDTO(chapter.getId(), topic));
             }
         }

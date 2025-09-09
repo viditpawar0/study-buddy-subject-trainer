@@ -13,7 +13,7 @@ import java.io.IOException;
 @Profile({"dev", "test"})
 public class DevContainersConfig {
     @Bean
-    @ServiceConnection(name = "localstack")
+    @ServiceConnection
     public LocalStackContainer localStackContainer() throws IOException, InterruptedException {
         LocalStackContainer localStackContainer = new LocalStackContainer(
                 DockerImageName.parse("localstack/localstack:4.7.0")
