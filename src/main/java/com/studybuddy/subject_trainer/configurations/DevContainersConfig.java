@@ -10,7 +10,7 @@ import org.testcontainers.utility.DockerImageName;
 import java.io.IOException;
 
 @Configuration
-@Profile({"dev", "test"})
+@Profile("dev")
 public class DevContainersConfig {
     @Bean
     @ServiceConnection
