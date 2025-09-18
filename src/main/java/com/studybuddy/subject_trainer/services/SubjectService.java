@@ -92,6 +92,10 @@ public class SubjectService {
         return subjectRepository.findById(id);
     }
 
+    public Iterable<Subject> retrieveAll() {
+        return subjectRepository.findAll();
+    }
+
     public void delete(Long id) {
         subjectRepository.deleteById(id);
     }

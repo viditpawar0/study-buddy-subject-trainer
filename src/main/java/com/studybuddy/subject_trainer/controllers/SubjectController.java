@@ -20,6 +20,11 @@ public class SubjectController {
         return ResponseEntity.ofNullable(subjectService.create(name, syllabus));
     }
 
+    @GetMapping
+    public ResponseEntity<Iterable<Subject>> getAll() {
+        return ResponseEntity.ofNullable(subjectService.retrieveAll());
+    }
+
     @GetMapping("{id}")
     public ResponseEntity<Subject> get(@PathVariable Long id) {
         return ResponseEntity.of(subjectService.retrieve(id));
