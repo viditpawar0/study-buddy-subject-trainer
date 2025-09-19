@@ -32,7 +32,6 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-netflix-eureka-client")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     implementation("org.springframework.boot:spring-boot-starter-test")
     implementation("org.springframework.ai:spring-ai-pdf-document-reader")
     implementation(platform("org.springframework.ai:spring-ai-bom:1.0.1"))
