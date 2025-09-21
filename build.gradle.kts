@@ -48,10 +48,10 @@ dependencies {
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("io.projectreactor:reactor-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    implementation("org.springframework.boot:spring-boot-testcontainers")
+    testImplementation("org.springframework.boot:spring-boot-testcontainers")
     testImplementation("org.testcontainers:junit-jupiter")
-    implementation("io.awspring.cloud:spring-cloud-aws-testcontainers")
-    implementation("org.testcontainers:localstack")
+    testImplementation("io.awspring.cloud:spring-cloud-aws-testcontainers")
+    testImplementation("org.testcontainers:localstack")
     testImplementation("org.awaitility:awaitility")
 }
 
