@@ -1,5 +1,6 @@
 package com.studybuddy.subject_trainer.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -13,11 +14,14 @@ public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     @Column
     private String name;
-    @Column
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "subject")
+    @JsonIgnore
     private List<Chapter> chapters = new ArrayList<>();
+
     @Column
     private URL syllabusDocument;
 }

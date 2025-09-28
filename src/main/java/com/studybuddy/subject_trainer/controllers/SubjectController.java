@@ -10,19 +10,14 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("subject")
+@RequestMapping("subjects")
 public class SubjectController {
     @Autowired
     SubjectService subjectService;
 
     @PostMapping
-    public ResponseEntity<Subject> post(@RequestPart("subject") String name, @RequestPart("syllabus") MultipartFile syllabus) throws IOException {
-        return ResponseEntity.ofNullable(subjectService.create(name, syllabus));
-    }
-
-    @GetMapping
-    public ResponseEntity<Iterable<Subject>> getAll() {
-        return ResponseEntity.ofNullable(subjectService.retrieveAll());
+    public ResponseEntity<Subject> post(@RequestPart("name") String name, @RequestPart("syllabusDoc") MultipartFile syllabusDoc) throws IOException {
+        return ResponseEntity.ofNullable(subjectService.create(name, syllabusDoc));
     }
 
     @GetMapping("{id}")
@@ -30,9 +25,20 @@ public class SubjectController {
         return ResponseEntity.of(subjectService.retrieve(id));
     }
 
+    @GetMapping
+    public ResponseEntity<Iterable<Subject>> getAll() {
+        return ResponseEntity.ofNullable(subjectService.retrieveAll());
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> delete(@RequestBody Subject subject) {
+        subjectService.delete(subject);
+        return ResponseEntity.ok().build();
+    }
+
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
-        subjectService.delete(id);
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        subjectService.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }

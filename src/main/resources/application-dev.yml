@@ -8,7 +8,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   ai:
     openai:
-      base-url: http://127.0.0.1:11434
+      base-url: http://127.0.0.1:1234
       api-key: not-required
       chat:
         options:

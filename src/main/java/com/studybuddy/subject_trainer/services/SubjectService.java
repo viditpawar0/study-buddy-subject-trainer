@@ -66,6 +66,7 @@ public class SubjectService {
             chapter.setName(chapterDTO.name());
             chapter.setChapterNumber(chapterDTO.chapterNumber());
             subject.getChapters().add(chapter);
+            chapter.setSubject(subject);
         }
 
         // Save Subject + Chapters (IDs are now generated)
@@ -96,7 +97,11 @@ public class SubjectService {
         return subjectRepository.findAll();
     }
 
-    public void delete(Long id) {
+    public void delete(Subject subject) {
+        subjectRepository.delete(subject);
+    }
+
+    public void deleteById(Long id) {
         subjectRepository.deleteById(id);
     }
 }
