@@ -6,11 +6,17 @@ import org.springframework.web.bind.annotation.*;
 @FeignClient(value = "topic-trainer", path = "topics")
 public interface TopicFeignClient {
     @PostMapping
-    TopicDTO postTopic(@RequestBody TopicDTO topicDTO);
+    Iterable<TopicDTO> post(@RequestBody Iterable<TopicDTO> topicDTO, @RequestParam Long chapterId);
+
     @GetMapping("{id}")
-    TopicDTO getTopic(@PathVariable Long id);
-    @PutMapping
-    TopicDTO putTopic(@RequestBody TopicDTO topicDTO);
+    TopicDTO get(@PathVariable Long id);
+
+    @PutMapping("{id}")
+    TopicDTO put(@RequestBody TopicDTO topicDTO, @PathVariable Long id);
+
     @DeleteMapping("{id}")
-    void deleteTopicById(@PathVariable Long id);
+    void delete(@PathVariable Long id);
+
+    @DeleteMapping
+    void deleteAllByChapterId(@RequestParam Long chapterId);
 }

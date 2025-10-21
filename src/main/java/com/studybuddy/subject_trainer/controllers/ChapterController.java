@@ -15,8 +15,8 @@ public class ChapterController {
     }
 
     @PostMapping
-    public ResponseEntity<Chapter> post(Chapter chapter) {
-        return ResponseEntity.ofNullable(chapterService.create(chapter));
+    public ResponseEntity<Iterable<Chapter>> post(@RequestBody Iterable<Chapter> chapters, @RequestParam Long subjectId) {
+        return ResponseEntity.ofNullable(chapterService.create(subjectId, chapters));
     }
 
     @GetMapping("{id}")
@@ -29,20 +29,14 @@ public class ChapterController {
         return ResponseEntity.ofNullable(chapterService.retrieveBySubjectId(subjectId));
     }
 
-    @PutMapping
-    public ResponseEntity<Chapter> put(Chapter chapter) {
-        return ResponseEntity.ofNullable(chapterService.update(chapter));
-    }
-
-    @DeleteMapping
-    public ResponseEntity<Void> delete(@RequestBody Chapter chapter) {
-        chapterService.delete(chapter);
-        return ResponseEntity.ok().build();
+    @PutMapping("{id}")
+    public ResponseEntity<Chapter> put(@RequestBody Chapter chapter, @PathVariable Long id) {
+        return ResponseEntity.ofNullable(chapterService.update(chapter, id));
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
-        chapterService.deleteById(id);
+        chapterService.delete(id);
         return ResponseEntity.ok().build();
     }
 }

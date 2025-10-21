@@ -24,4 +24,27 @@ public class Subject {
 
     @Column
     private URL syllabusDocument;
+
+    @Column
+    private String syllabusDocS3Key;
+
+    @Column
+    private Status status;
+
+    public void addChapters(Chapter... chapters) {
+        for (final var chapter : chapters) {
+            chapter.setSubject(this);
+            this.chapters.add(chapter);
+        }
+    }
+
+    public void removeChapters(Chapter... chapters) {
+        for (final var chapter : chapters){
+            this.chapters.remove(chapter);
+        }
+    }
+
+    public void clearChapters() {
+        this.chapters.clear();
+    }
 }

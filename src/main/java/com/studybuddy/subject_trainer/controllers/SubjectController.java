@@ -30,15 +30,14 @@ public class SubjectController {
         return ResponseEntity.ofNullable(subjectService.retrieveAll());
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> delete(@RequestBody Subject subject) {
-        subjectService.delete(subject);
-        return ResponseEntity.ok().build();
+    @PutMapping("{id}")
+    public ResponseEntity<Subject> put(@RequestBody Subject subject, @PathVariable Long id) {
+        return ResponseEntity.ofNullable(subjectService.update(subject, id));
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteById(@PathVariable Long id) {
-        subjectService.deleteById(id);
+        subjectService.delete(id);
         return ResponseEntity.ok().build();
     }
 }

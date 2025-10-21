@@ -1,6 +1,7 @@
 package com.studybuddy.subject_trainer.configurations;
 
 
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.ai.openai.OpenAiChatOptions;
@@ -30,5 +31,9 @@ public class OpenAiConfig {
                         .apiKey(apiKey)
                         .build())
                 .build();
+    }
+    @Bean
+    public ChatClient chatClient(ChatModel chatModel) {
+        return ChatClient.create(chatModel);
     }
 }
