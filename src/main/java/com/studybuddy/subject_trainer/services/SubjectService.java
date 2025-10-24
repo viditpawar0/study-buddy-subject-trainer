@@ -1,5 +1,6 @@
 package com.studybuddy.subject_trainer.services;
 
+import com.studybuddy.subject_trainer.entities.Status;
 import com.studybuddy.subject_trainer.entities.Subject;
 import com.studybuddy.subject_trainer.repositories.SubjectRepository;
 import com.studybuddy.subject_trainer.utils.Utils;
@@ -26,6 +27,7 @@ public class SubjectService {
     }
 
     public Iterable<Subject> create(Iterable<Subject> subjects) {
+        subjects.forEach(subject -> subject.setStatus(Status.INITIALIZED));
         return subjectRepository.saveAll(subjects);
     }
 

@@ -12,10 +12,18 @@ import java.io.IOException;
 @RestController
 @RequestMapping("subjects")
 public class SubjectController {
-    @Autowired
-    SubjectService subjectService;
+    private final SubjectService subjectService;
+
+    public SubjectController(SubjectService subjectService) {
+        this.subjectService = subjectService;
+    }
 
     @PostMapping
+    public ResponseEntity<Iterable<Subject>> post(@RequestBody Iterable<Subject> subject) {
+        return ResponseEntity.ofNullable(subjectService.create(subject));
+    }
+
+    @PostMapping("auto")
     public ResponseEntity<Subject> post(@RequestPart("name") String name, @RequestPart("syllabusDoc") MultipartFile syllabusDoc) throws IOException {
         return ResponseEntity.ofNullable(subjectService.create(name, syllabusDoc));
     }
