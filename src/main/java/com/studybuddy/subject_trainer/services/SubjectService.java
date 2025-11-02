@@ -40,6 +40,7 @@ public class SubjectService {
                 subject.getSyllabusDocS3Key(),
                 syllabus.getInputStream()
         ).getURL());
+        subject.setStatus(Status.INITIALIZING);
         Subject saved = subjectRepository.save(subject);
         subjectInitiationService.initializeSubjectAsync(saved);
         return saved;

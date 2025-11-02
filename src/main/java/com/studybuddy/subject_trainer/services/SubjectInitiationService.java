@@ -29,7 +29,6 @@ public class SubjectInitiationService {
 
     @Async
     public void initializeSubjectAsync(Subject saved) {
-        saved.setStatus(Status.INITIALIZING);
         try {
             final var pdfText = new StringBuilder();
             for (final var document : new PagePdfDocumentReader(saved.getSyllabusDocument().toString()).get()) {

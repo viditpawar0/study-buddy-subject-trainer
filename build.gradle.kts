@@ -54,6 +54,7 @@ dependencies {
     testImplementation("io.awspring.cloud:spring-cloud-aws-testcontainers")
     testImplementation("org.testcontainers:localstack")
     testImplementation("org.awaitility:awaitility")
+    implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-client")
 }
 
 dependencyManagement {
