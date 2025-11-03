@@ -59,6 +59,9 @@ public class SubjectService {
         if (newSubject.getName() != null) {
             oldSubject.setName(newSubject.getName());
         }
+        if (newSubject.getStatus() != null) {
+            oldSubject.setStatus(newSubject.getStatus());
+        }
         return subjectRepository.save(oldSubject);
     }
 
