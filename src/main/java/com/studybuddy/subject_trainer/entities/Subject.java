@@ -31,6 +31,9 @@ public class Subject {
     @Column
     private Status status;
 
+    @Column
+    private String uid;
+
     public void addChapters(Chapter... chapters) {
         for (final var chapter : chapters) {
             chapter.setSubject(this);

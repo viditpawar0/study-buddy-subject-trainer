@@ -1,9 +1,7 @@
 package com.studybuddy.subject_trainer.scratch;
 
-import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.messages.*;
+import com.google.firebase.auth.FirebaseAuth;
 import org.springframework.ai.chat.model.ChatModel;
-import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,16 +12,11 @@ public class ScratchController {
     ChatModel chatModel;
 
     @Autowired
-    private ChatClient chatClient;
-
-    private record Person(String name, String country) {}
+    private FirebaseAuth firebaseAuth;
 
     @GetMapping
-    public String scratch() {
-        return chatClient.prompt(new Prompt(
-                new SystemMessage("Please teach Addition to the user"),
-                new UserMessage("")
-        )).call().content();
+    public String scratch(@RequestHeader ("Authorization") String idToken) throws Exception{
+        return firebaseAuth.verifyIdToken(idToken).getUid();
     }
 
     @GetMapping("chat-completion")

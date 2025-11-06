@@ -2,7 +2,6 @@ package com.studybuddy.subject_trainer.controllers;
 
 import com.studybuddy.subject_trainer.entities.Subject;
 import com.studybuddy.subject_trainer.services.SubjectService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;

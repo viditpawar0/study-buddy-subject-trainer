@@ -55,6 +55,7 @@ dependencies {
     testImplementation("org.testcontainers:localstack")
     testImplementation("org.awaitility:awaitility")
     implementation("org.springframework.cloud:spring-cloud-starter-kubernetes-client")
+    implementation("com.google.firebase:firebase-admin:9.7.0")
 }
 
 dependencyManagement {

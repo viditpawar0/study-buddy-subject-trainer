@@ -15,7 +15,7 @@ public class ChapterEntityListener {
     }
 
     @PreRemove
-    public void postRemove(Chapter chapter) {
+    public void cascadeTopics(Chapter chapter) {
         topicFeignClient.deleteAllByChapterId(chapter.getId());
     }
 }

@@ -12,7 +12,8 @@ public class ChapterService {
     private final ChapterRepository chapterRepository;
     private final SubjectService subjectService;
 
-    public ChapterService(ChapterRepository chapterRepository, SubjectService subjectService) {
+    public ChapterService(ChapterRepository chapterRepository,
+                          SubjectService subjectService) {
         this.chapterRepository = chapterRepository;
         this.subjectService = subjectService;
     }
