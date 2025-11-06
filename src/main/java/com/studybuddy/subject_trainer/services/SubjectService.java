@@ -36,13 +36,13 @@ public class SubjectService {
         subject.setName(name);
         subject.setSyllabusDocS3Key(UUID.randomUUID().toString());
         subject.setSyllabusDocument(s3Template.upload(
-                "study-buddy",
+                "study-buddy-bucket-s3",
                 subject.getSyllabusDocS3Key(),
                 syllabus.getInputStream()
         ).getURL());
         subject.setStatus(Status.INITIALIZING);
         Subject saved = subjectRepository.save(subject);
-        subjectInitiationService.initializeSubjectAsync(saved);
+        subjectInitiationService.initializeSubjectAsync(saved, syllabus);
         return saved;
     }
 

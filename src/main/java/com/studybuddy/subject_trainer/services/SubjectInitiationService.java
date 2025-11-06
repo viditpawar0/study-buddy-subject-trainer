@@ -9,6 +9,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.reader.pdf.PagePdfDocumentReader;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +29,10 @@ public class SubjectInitiationService {
     }
 
     @Async
-    public void initializeSubjectAsync(Subject saved) {
+    public void initializeSubjectAsync(Subject saved, MultipartFile syllabus) {
         try {
             final var pdfText = new StringBuilder();
-            for (final var document : new PagePdfDocumentReader(saved.getSyllabusDocument().toString()).get()) {
+            for (final var document : new PagePdfDocumentReader(syllabus.getResource()).get()) {
                 pdfText.append(document.getText());
             }
             final var systemPrompt = "Extract units/chapters and topics from the provided text. Strictly stick to the contents of the file.";
