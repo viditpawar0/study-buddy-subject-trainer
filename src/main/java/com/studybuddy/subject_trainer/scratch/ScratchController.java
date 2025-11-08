@@ -11,14 +11,6 @@ public class ScratchController {
     @Autowired
     ChatModel chatModel;
 
-    @Autowired
-    private FirebaseAuth firebaseAuth;
-
-    @GetMapping
-    public String scratch(@RequestHeader ("Authorization") String idToken) throws Exception{
-        return firebaseAuth.verifyIdToken(idToken).getUid();
-    }
-
     @GetMapping("chat-completion")
     public String chatCompletion(@RequestBody String prompt) {
         return chatModel.call(prompt);
